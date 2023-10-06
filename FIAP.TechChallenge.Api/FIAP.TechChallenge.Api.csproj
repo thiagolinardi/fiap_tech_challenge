@@ -1,0 +1,30 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net7.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="12.0.1" />
+    <PackageReference Include="MediatR" Version="12.1.1" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Versioning" Version="5.1.0" />
+    <PackageReference Include="Microsoft.OpenApi" Version="1.6.9" />
+    <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.19.4" />
+    <PackageReference Include="NSwag.AspNetCore" Version="13.20.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Controllers\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\FIAP.Crosscutting.Domain\FIAP.Crosscutting.Domain.csproj" />
+    <ProjectReference Include="..\FIAP.Crosscutting.Infrastructure\FIAP.Crosscutting.Infrastructure.csproj" />
+    <ProjectReference Include="..\FIAP.TechChallenge.Application\FIAP.TechChallenge.Application.csproj" />
+    <ProjectReference Include="..\FIAP.TechChallenge.Infrastructure\FIAP.TechChallenge.Infrastructure.csproj" />
+    <ProjectReference Include="..\FIAP.TechChallenge.IoC\FIAP.TechChallenge.IoC.csproj" />
+  </ItemGroup>
+
+</Project>
