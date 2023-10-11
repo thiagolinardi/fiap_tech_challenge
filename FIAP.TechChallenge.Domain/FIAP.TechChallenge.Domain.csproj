@@ -6,17 +6,12 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Commands\" />
     <Folder Include="DataTransferObjects\" />
-    <Folder Include="Enumerators\" />
     <Folder Include="EventHandlers\" />
     <Folder Include="Events\" />
-    <Folder Include="Interfaces\Repositories\" />
     <Folder Include="Entities\" />
     <Folder Include="Queries\" />
     <Folder Include="QueryHandlers\" />
-    <Folder Include="Validations\" />
-    <Folder Include="CommandHandlers\" />
     <Folder Include="Behaviours\" />
   </ItemGroup>
 
