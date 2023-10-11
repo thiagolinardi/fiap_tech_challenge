@@ -6,13 +6,12 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="ViewModels\" />
-    <Folder Include="Services\" />
-    <Folder Include="Interfaces\" />
+    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="12.0.1" />
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="12.0.1" />
+    <ProjectReference Include="..\FIAP.Crosscutting.Domain\FIAP.Crosscutting.Domain.csproj" />
+    <ProjectReference Include="..\FIAP.TechChallenge.Domain\FIAP.TechChallenge.Domain.csproj" />
   </ItemGroup>
 
 </Project>

@@ -1,4 +1,7 @@
 ﻿using AutoMapper;
+using FIAP.Crosscutting.Domain.Helpers.Pagination;
+using FIAP.TechChallenge.Application.ViewModels;
+using FIAP.TechChallenge.Domain.DataTransferObjects;
 
 namespace FIAP.TechChallenge.Application.Mappings
 {
@@ -6,7 +9,8 @@ namespace FIAP.TechChallenge.Application.Mappings
     {
         public ToViewModelMappingProfile()
         {
-            
+            CreateMap<CustomerDto, CustomerResponseViewModel>();
+            CreateMap<PagedResult<CustomerDto>, PagedResult<CustomerResponseViewModel>>();
         }
     }
 }

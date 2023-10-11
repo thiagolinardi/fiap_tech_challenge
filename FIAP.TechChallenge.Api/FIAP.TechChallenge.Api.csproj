@@ -16,10 +16,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Controllers\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\FIAP.Crosscutting.Domain\FIAP.Crosscutting.Domain.csproj" />
     <ProjectReference Include="..\FIAP.Crosscutting.Infrastructure\FIAP.Crosscutting.Infrastructure.csproj" />
     <ProjectReference Include="..\FIAP.TechChallenge.Application\FIAP.TechChallenge.Application.csproj" />

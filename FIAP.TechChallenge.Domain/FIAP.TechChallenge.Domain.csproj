@@ -6,12 +6,9 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="DataTransferObjects\" />
     <Folder Include="EventHandlers\" />
     <Folder Include="Events\" />
     <Folder Include="Entities\" />
-    <Folder Include="Queries\" />
-    <Folder Include="QueryHandlers\" />
     <Folder Include="Behaviours\" />
   </ItemGroup>
 

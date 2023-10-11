@@ -1,4 +1,5 @@
 ﻿using FIAP.Crosscutting.Domain.Commands.Handlers;
+using FIAP.Crosscutting.Domain.Helpers.Extensions;
 using FIAP.Crosscutting.Domain.MediatR;
 using FIAP.TechChallenge.Domain.Commands;
 using FIAP.TechChallenge.Domain.Helpers.Constants;
@@ -43,6 +44,7 @@ namespace FIAP.TechChallenge.Domain.CommandHandlers
             customer.Name = request.Name;
             customer.Email = request.Email;
             customer.Document = request.Document;
+            customer.UpdatedAt = DateTime.Now.ToBrazilianTimezone();
 
             await _customerRepository .UpdateAsync(customer);
 
