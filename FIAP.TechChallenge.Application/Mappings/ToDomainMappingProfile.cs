@@ -18,6 +18,11 @@ namespace FIAP.TechChallenge.Application.Mappings
 
             CreateMap<ProductViewModel, AddProductCommand>();
             CreateMap<ProductViewModel, UpdateProductCommand>();
+
+            CreateMap<Order, OrderDto>();
+            CreateMap<PagedResult<Order>, PagedResult<OrderDto>>();
+            CreateMap<OrderRequestViewModel, AddOrderCommand>();
+            CreateMap<OrderRequestViewModel, UpdateOrderCommand>();
         }
     }
 }

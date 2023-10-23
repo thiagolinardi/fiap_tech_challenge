@@ -1,13 +1,13 @@
-﻿using System;
-using FIAP.Crosscutting.Domain.Entities;
+﻿using FIAP.Crosscutting.Domain.Entities;
 
 namespace FIAP.TechChallenge.Domain.Entities
 {
-	public class Order : Entity
+    public class Order : Entity
     {
-		public Order()
-		{
-		}
-	}
+		public Guid CustomerId { get; set; }
+		public decimal Total { get; set; }
+		public Customer Customer { get; set; }
+		public ICollection<OrderItem> OrderItems { get; set; }
+    }
 }
 

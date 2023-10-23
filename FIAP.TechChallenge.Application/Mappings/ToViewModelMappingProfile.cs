@@ -11,6 +11,12 @@ namespace FIAP.TechChallenge.Application.Mappings
         {
             CreateMap<CustomerDto, CustomerResponseViewModel>();
             CreateMap<PagedResult<CustomerDto>, PagedResult<CustomerResponseViewModel>>();
+
+            CreateMap<CustomerDto, CustomerResponseViewModel>();
+            CreateMap<PagedResult<CustomerDto>, PagedResult<CustomerResponseViewModel>>();
+
+            CreateMap<OrderDto, OrderResponseViewModel>();
+            CreateMap<PagedResult<OrderDto>, PagedResult<OrderResponseViewModel>>();
         }
     }
 }

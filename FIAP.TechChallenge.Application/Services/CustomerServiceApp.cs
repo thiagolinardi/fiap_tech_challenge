@@ -5,7 +5,6 @@ using FIAP.TechChallenge.Application.Interfaces;
 using FIAP.TechChallenge.Application.ViewModels;
 using FIAP.TechChallenge.Domain.Commands;
 using FIAP.TechChallenge.Domain.Queries;
-using Microsoft.AspNetCore.Authentication;
 
 namespace FIAP.TechChallenge.Application.Services
 {
