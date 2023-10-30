@@ -1,8 +1,6 @@
-using FIAP.Crosscutting.Domain.Services.Authentication;
 using FIAP.Crosscutting.Infrastructure.Contexts.SqlServer;
 using FIAP.TechChallenge.Api.Configurations;
 using FIAP.TechChallenge.Api.Conventions;
-using FIAP.TechChallenge.Domain.Middlewares;
 using FIAP.TechChallenge.Infrastructure.Contexts;
 using Microsoft.AspNetCore.ResponseCompression;
 using System.IO.Compression;
@@ -46,15 +44,8 @@ var app = builder.Build();
 
 app.MigrationAndSeedDatabase();
 
-if (app.Environment.IsDevelopment() || app.Environment.IsStaging())
-{
-    //app.ConfigureExceptionHandler();
-    app.UseDeveloperExceptionPage();
-    app.UseSwaggerSetup();
-}
-else
-    app.ConfigureExceptionHandler();
-
+app.UseDeveloperExceptionPage();
+app.UseSwaggerSetup();
 app.UseApiVersioning();
 app.UseRouting();
 app.UseAuthentication();
