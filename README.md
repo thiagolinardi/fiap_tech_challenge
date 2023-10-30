@@ -22,6 +22,12 @@ Após o clone da brach [main](https://github.com/thiagolinardi/fiap_tech_challen
 docker-compose up -d
 ```
 
+Após a inicialização dos containers, basta acessar o endereço abaixo para ter acesso a documentação.
+
+```
+http://localhost:8081/docs
+```
+
 ## Tecnologias implementadas
 
 - ASP.NET 7.0
