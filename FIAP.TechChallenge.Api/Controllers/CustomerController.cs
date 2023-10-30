@@ -51,6 +51,7 @@ namespace FIAP.TechChallenge.Api.Controllers
         [ProducesResponseType(typeof(CustomerResponseViewModel), StatusCodes.Status200OK)]
         [ProducesResponseType(typeof(BadRequestResponse), StatusCodes.Status400BadRequest)]
         [ProducesResponseType(typeof(UnauthorizedResponse), StatusCodes.Status401Unauthorized)]
+        [ApiExplorerSettings(IgnoreApi = true)]
         [HttpGet("{id}")]
         public async Task<IActionResult> Get([FromRoute] string id)
         {

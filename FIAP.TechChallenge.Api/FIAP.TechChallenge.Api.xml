@@ -43,14 +43,10 @@
             </summary>
             <param name="id">Código do cliente</param>
         </member>
-        <member name="M:FIAP.TechChallenge.Api.Controllers.OrderController.Get(System.Int32,System.Int32,System.String,System.Boolean)">
+        <member name="M:FIAP.TechChallenge.Api.Controllers.OrderController.GetOrders">
             <summary>
-            Realiza a consulta paginada de pedidos
+            Realiza a consulta do pedidos
             </summary>
-            <param name="page">Página atual</param>
-            <param name="take">Quantidade de registros por página</param>
-            <param name="order_property">Propriedade de ordenação</param>
-            <param name="order_desc">Sentido da ordenação (desc)</param>
         </member>
         <member name="M:FIAP.TechChallenge.Api.Controllers.OrderController.Get(System.String)">
             <summary>
@@ -85,6 +81,12 @@
             Realiza a exclusão de um pedido
             </summary>
             <param name="id">Código do pedido</param>
+        </member>
+        <member name="M:FIAP.TechChallenge.Api.Controllers.ProductController.Get(System.String)">
+            <summary>
+            Realiza a consulta dos produtos por categoria
+            </summary>
+            <param name="category">Categoria do produto (Lanche, Acompanhamento, Bebida ou Sobremesa)</param>
         </member>
         <member name="M:FIAP.TechChallenge.Api.Controllers.ProductController.Post(FIAP.TechChallenge.Application.ViewModels.ProductViewModel)">
             <summary>

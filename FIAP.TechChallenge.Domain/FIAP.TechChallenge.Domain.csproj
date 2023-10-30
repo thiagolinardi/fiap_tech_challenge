@@ -15,8 +15,6 @@
     <Folder Include="DataTransferObjects\Order\" />
     <Folder Include="Validations\Order\" />
     <Folder Include="Interfaces\Repositories\Order\" />
-    <Folder Include="Queries\Order\" />
-    <Folder Include="QueryHandlers\Order\" />
   </ItemGroup>
 
   <ItemGroup>

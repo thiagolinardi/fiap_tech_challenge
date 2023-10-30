@@ -3,6 +3,7 @@ using FIAP.Crosscutting.Domain.MediatR;
 using FIAP.TechChallenge.Application.Interfaces;
 using FIAP.TechChallenge.Application.ViewModels;
 using FIAP.TechChallenge.Domain.Commands;
+using FIAP.TechChallenge.Domain.Queries;
 
 namespace FIAP.TechChallenge.Application.Services
 {
@@ -17,6 +18,14 @@ namespace FIAP.TechChallenge.Application.Services
         {
             _mediator = mediator;
             _mapper = mapper;
+        }
+
+        public async Task<List<ProductViewModel>> GetProductsByCategory(string category)
+        {
+            var query = new GetProductsByCategoryQuery { Category = category };
+            var response = await _mediator.SendQuery(query);
+
+            return _mapper.Map<List<ProductViewModel>>(response);
         }
 
         public async Task SaveProduct(ProductViewModel viewModel, bool update = false)

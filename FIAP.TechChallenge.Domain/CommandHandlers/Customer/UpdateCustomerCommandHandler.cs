@@ -46,9 +46,9 @@ namespace FIAP.TechChallenge.Domain.CommandHandlers
             customer.Document = request.Document;
             customer.UpdatedAt = DateTime.Now.ToBrazilianTimezone();
 
-            await _customerRepository .UpdateAsync(customer);
+            await _customerRepository.UpdateAsync(customer);
 
-            if (HasNotification() && !await _unitOfWork.CommitAsync())
+            if (HasNotification() || !await _unitOfWork.CommitAsync())
                 NotifyError(Values.Message.DefaultError);
         }
     }

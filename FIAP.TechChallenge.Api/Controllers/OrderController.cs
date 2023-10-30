@@ -1,9 +1,7 @@
-﻿using System;
-using FIAP.Crosscutting.Domain.Controller;
+﻿using FIAP.Crosscutting.Domain.Controller;
 using FIAP.Crosscutting.Domain.Helpers.Pagination;
 using FIAP.Crosscutting.Domain.MediatR;
 using FIAP.TechChallenge.Application.Interfaces;
-using FIAP.TechChallenge.Application.Services;
 using FIAP.TechChallenge.Application.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 
@@ -25,23 +23,15 @@ namespace FIAP.TechChallenge.Api.Controllers
         }
 
         /// <summary>
-        /// Realiza a consulta paginada de pedidos
+        /// Realiza a consulta do pedidos
         /// </summary>
-        /// <param name="page">Página atual</param>
-        /// <param name="take">Quantidade de registros por página</param>
-        /// <param name="order_property">Propriedade de ordenação</param>
-        /// <param name="order_desc">Sentido da ordenação (desc)</param>
-        [ProducesResponseType(typeof(PagedResult<CustomerResponseViewModel>), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(List<OrderResponseViewModel>), StatusCodes.Status200OK)]
         [ProducesResponseType(typeof(BadRequestResponse), StatusCodes.Status400BadRequest)]
         [ProducesResponseType(typeof(UnauthorizedResponse), StatusCodes.Status401Unauthorized)]
         [HttpGet]
-        public async Task<IActionResult> Get(
-            [FromQuery] int page = 1,
-            [FromQuery] int take = 20,
-            [FromQuery] string order_property = "created_at",
-            [FromQuery] bool order_desc = true)
+        public async Task<IActionResult> GetOrders()
         {
-            var response = await _orderServiceApp.GetPagedOrders(page, take, order_property, order_desc);
+            var response = await _orderServiceApp.GetOrders();
 
             return Response(response);
         }
@@ -53,6 +43,7 @@ namespace FIAP.TechChallenge.Api.Controllers
         [ProducesResponseType(typeof(CustomerResponseViewModel), StatusCodes.Status200OK)]
         [ProducesResponseType(typeof(BadRequestResponse), StatusCodes.Status400BadRequest)]
         [ProducesResponseType(typeof(UnauthorizedResponse), StatusCodes.Status401Unauthorized)]
+        [ApiExplorerSettings(IgnoreApi = true)]
         [HttpGet("{id}")]
         public async Task<IActionResult> Get([FromRoute] string id)
         {
@@ -77,6 +68,7 @@ namespace FIAP.TechChallenge.Api.Controllers
         [ProducesResponseType(typeof(CustomerResponseViewModel), StatusCodes.Status200OK)]
         [ProducesResponseType(typeof(BadRequestResponse), StatusCodes.Status400BadRequest)]
         [ProducesResponseType(typeof(UnauthorizedResponse), StatusCodes.Status401Unauthorized)]
+        [ApiExplorerSettings(IgnoreApi = true)]
         [HttpGet("customer")]
         public async Task<IActionResult> GetByCustomerId(
             [FromQuery] string customerId,
@@ -137,4 +129,3 @@ namespace FIAP.TechChallenge.Api.Controllers
         }
     }
 }
-

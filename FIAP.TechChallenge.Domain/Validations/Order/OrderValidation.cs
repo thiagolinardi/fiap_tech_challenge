@@ -13,9 +13,6 @@ namespace FIAP.TechChallenge.Domain.Validations
 
         protected void ValidateOrder()
         {
-            RuleFor(x => x.CustomerId)
-                .NotNull().NotEqual(Guid.Empty).WithMessage("O código do cliente é obrigatório");
-
             RuleFor(x => x.Total)
                 .NotNull().WithMessage("O total do pedido é obrigatório");
 
@@ -26,7 +23,7 @@ namespace FIAP.TechChallenge.Domain.Validations
         }
     }
 
-    public class OrderItemValidation : AbstractValidator<OrderCommand.OrderItem>
+    public class OrderItemValidation : AbstractValidator<OrderItemCommand>
     {
         protected void ValidateOrderItem()
         {

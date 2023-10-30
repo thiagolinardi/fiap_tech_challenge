@@ -19,7 +19,7 @@ namespace FIAP.TechChallenge.Application.Services
         {
             _mediator = mediator;
             _mapper = mapper;
-        }        
+        }
 
         public async Task<OrderResponseViewModel> GetOrder(string id)
         {
@@ -27,6 +27,14 @@ namespace FIAP.TechChallenge.Application.Services
             var response = await _mediator.SendQuery(query);
 
             return _mapper.Map<OrderResponseViewModel>(response);
+        }
+
+        public async Task<List<OrderResponseViewModel>> GetOrders()
+        {
+            var query = new GetOrdersQuery();
+            var response = await _mediator.SendQuery(query);
+
+            return _mapper.Map<List<OrderResponseViewModel>>(response);
         }
 
         public async Task<PagedResult<OrderResponseViewModel>> GetPagedOrdersByCustomerId(string customerId, int page, int take, string orderProperty, bool orderDesc)

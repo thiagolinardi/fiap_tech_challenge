@@ -11,10 +11,26 @@ namespace FIAP.TechChallenge.Infrastructure.Mappings
             builder.Property(x => x.CustomerId)
                 .HasColumnName("customer_id");
 
+            builder.Property(x => x.Number)
+                .HasColumnName("number")
+                .IsRequired();
+
             builder.Property(x => x.Total)
                 .HasColumnName("total")
                 .HasColumnType("decimal(8,2)")
                 .IsRequired();
+
+            builder.Property(x => x.Situation)
+                .HasColumnName("situation")
+                .HasMaxLength(50)
+                .IsRequired();
+
+            builder.Ignore(x => x.OrderSituationEnum);
+
+            builder.HasOne(x => x.Customer)
+                .WithMany()
+                .HasForeignKey(x => x.CustomerId)
+                .OnDelete(DeleteBehavior.Restrict);
 
             builder.ToTable("orders", "order");
 

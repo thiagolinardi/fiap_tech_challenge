@@ -44,7 +44,7 @@ namespace FIAP.TechChallenge.Domain.CommandHandlers
 
             await _productRepository.InsertAsync(product);
 
-            if (HasNotification() && !await _unitOfWork.CommitAsync())
+            if (HasNotification() || !await _unitOfWork.CommitAsync())
                 NotifyError(Values.Message.DefaultError);
         }
     }

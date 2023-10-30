@@ -3,11 +3,16 @@
 namespace FIAP.TechChallenge.Application.ViewModels
 {
     public class OrderResponseViewModel
-	{
+    {
         /// <summary>
         /// Código do pedido
         /// </summary>
         public Guid Id { get; set; }
+
+        /// <summary>
+        /// Nome do cliente
+        /// </summary>
+        public string CustomerName { get; set; }
 
         /// <summary>
         /// Valor total do pedido
@@ -15,17 +20,22 @@ namespace FIAP.TechChallenge.Application.ViewModels
         public decimal Total { get; set; }
 
         /// <summary>
-        /// Items do pedido
+        /// Lista de produtos do pedido
         /// </summary>
+        public List<OrderItemViewModel> OrderItems { get; set; }
 
-        
-        [JsonPropertyName("created_at")]
+        /// <summary>
+        /// Situação do pedido
+        /// </summary>
+        public string Situation { get; set; }
+
+        /// <summary>
+        /// Data de criação do pedido
+        /// </summary>
         public DateTime CreatedAt { get; set; }
-
-        public Items Items { get; set; }
     }
 
-    public class Items
+    public class OrderItemViewModel
     {
         /// <summary>
         /// Código do produto
@@ -35,12 +45,11 @@ namespace FIAP.TechChallenge.Application.ViewModels
         /// <summary>
         /// Nome do produto
         /// </summary>
-        public string Name { get; set; }
+        public string ProductName { get; set; }
 
         /// <summary>
-        /// Preço do produto
+        /// Quantida do produto
         /// </summary>
-        public decimal Price { get; set; }
+        public int Quantity { get; set; }
     }
 }
-

@@ -2,6 +2,7 @@
 using FIAP.Crosscutting.Domain.MediatR;
 using FIAP.TechChallenge.Domain.Commands;
 using FIAP.TechChallenge.Domain.Entities;
+using FIAP.TechChallenge.Domain.Enumerators;
 using FIAP.TechChallenge.Domain.Helpers.Constants;
 using FIAP.TechChallenge.Domain.Interfaces.Repositories;
 using FIAP.TechChallenge.Domain.Interfaces.UnitOfWork;
@@ -27,10 +28,14 @@ namespace FIAP.TechChallenge.Domain.CommandHandlers
 
         public override async Task AfterValidation(AddOrderCommand request)
         {
+            Int64 lastOrderNumber = await _orderRepository.CountAllAsync();
+
             var order = new Entities.Order
             {
                 CustomerId = request.CustomerId,
-                Total = request.Total
+                Number = lastOrderNumber + 1,
+                Total = request.Total,
+                OrderSituationEnum = OrderSituationEnum.Received
             };
 
             await _orderRepository.InsertAsync(order);
@@ -42,9 +47,8 @@ namespace FIAP.TechChallenge.Domain.CommandHandlers
                 Quantity = x.Quantity
             }).ToList());
 
-            if (HasNotification() && !await _unitOfWork.CommitAsync())
+            if (HasNotification() || !await _unitOfWork.CommitAsync())
                 NotifyError(Values.Message.DefaultError);
         }
     }
 }
-

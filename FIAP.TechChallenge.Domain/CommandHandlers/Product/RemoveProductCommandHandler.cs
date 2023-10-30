@@ -33,7 +33,7 @@ namespace FIAP.TechChallenge.Domain.CommandHandlers
 
             await _productRepository.DeleteByIdAsync(request.Id);
 
-            if (HasNotification() && !await _unitOfWork.CommitAsync())
+            if (HasNotification() || !await _unitOfWork.CommitAsync())
                 NotifyError(Values.Message.DefaultError);
         }
     }

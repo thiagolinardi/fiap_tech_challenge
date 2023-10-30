@@ -54,12 +54,17 @@
             Valor total do pedido
             </summary>
         </member>
-        <member name="P:FIAP.TechChallenge.Application.ViewModels.OrderRequestViewModel.OrderItem.ProductId">
+        <member name="P:FIAP.TechChallenge.Application.ViewModels.OrderRequestViewModel.OrderItems">
+            <summary>
+            Lista de produtos do pedido
+            </summary>
+        </member>
+        <member name="P:FIAP.TechChallenge.Application.ViewModels.OrderItemRequestViewModel.ProductId">
             <summary>
             Código do produto
             </summary>
         </member>
-        <member name="P:FIAP.TechChallenge.Application.ViewModels.OrderRequestViewModel.OrderItem.Quantity">
+        <member name="P:FIAP.TechChallenge.Application.ViewModels.OrderItemRequestViewModel.Quantity">
             <summary>
             Quantidade do produto
             </summary>
@@ -69,29 +74,44 @@
             Código do pedido
             </summary>
         </member>
+        <member name="P:FIAP.TechChallenge.Application.ViewModels.OrderResponseViewModel.CustomerName">
+            <summary>
+            Nome do cliente
+            </summary>
+        </member>
         <member name="P:FIAP.TechChallenge.Application.ViewModels.OrderResponseViewModel.Total">
             <summary>
             Valor total do pedido
             </summary>
         </member>
-        <member name="P:FIAP.TechChallenge.Application.ViewModels.OrderResponseViewModel.CreatedAt">
+        <member name="P:FIAP.TechChallenge.Application.ViewModels.OrderResponseViewModel.OrderItems">
             <summary>
-            Items do pedido
+            Lista de produtos do pedido
             </summary>
         </member>
-        <member name="P:FIAP.TechChallenge.Application.ViewModels.Items.ProductId">
+        <member name="P:FIAP.TechChallenge.Application.ViewModels.OrderResponseViewModel.Situation">
+            <summary>
+            Situação do pedido
+            </summary>
+        </member>
+        <member name="P:FIAP.TechChallenge.Application.ViewModels.OrderResponseViewModel.CreatedAt">
+            <summary>
+            Data de criação do pedido
+            </summary>
+        </member>
+        <member name="P:FIAP.TechChallenge.Application.ViewModels.OrderItemViewModel.ProductId">
             <summary>
             Código do produto
             </summary>
         </member>
-        <member name="P:FIAP.TechChallenge.Application.ViewModels.Items.Name">
+        <member name="P:FIAP.TechChallenge.Application.ViewModels.OrderItemViewModel.ProductName">
             <summary>
             Nome do produto
             </summary>
         </member>
-        <member name="P:FIAP.TechChallenge.Application.ViewModels.Items.Price">
+        <member name="P:FIAP.TechChallenge.Application.ViewModels.OrderItemViewModel.Quantity">
             <summary>
-            Preço do produto
+            Quantida do produto
             </summary>
         </member>
         <member name="P:FIAP.TechChallenge.Application.ViewModels.ProductViewModel.Id">
@@ -116,7 +136,7 @@
         </member>
         <member name="P:FIAP.TechChallenge.Application.ViewModels.ProductViewModel.Category">
             <summary>
-            Categoria do produto
+            Categoria do produto (Lanche, Acompanhamento, Bebida ou Sobremesa)
             </summary>
         </member>
     </members>

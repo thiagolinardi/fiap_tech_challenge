@@ -30,7 +30,7 @@ namespace FIAP.TechChallenge.Domain.CommandHandlers
 
             if (registeredCustomer)
             {
-                NotifyError("O usuário infomado já está cadastrado");
+                NotifyError("Já existe um cliente com o CPF ou e-mail informado");
                 return;
             }
 
@@ -43,7 +43,7 @@ namespace FIAP.TechChallenge.Domain.CommandHandlers
 
             await _customerRepository.InsertAsync(customer);
 
-            if (HasNotification() && !await _unitOfWork.CommitAsync())
+            if (HasNotification() || !await _unitOfWork.CommitAsync())
                 NotifyError(Values.Message.DefaultError);
         }
     }

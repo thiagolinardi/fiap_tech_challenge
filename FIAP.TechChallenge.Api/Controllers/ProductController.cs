@@ -22,6 +22,21 @@ namespace FIAP.TechChallenge.Api.Controllers
         }
 
         /// <summary>
+        /// Realiza a consulta dos produtos por categoria
+        /// </summary>
+        /// <param name="category">Categoria do produto (Lanche, Acompanhamento, Bebida ou Sobremesa)</param>
+        [ProducesResponseType(typeof(List<ProductViewModel>), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(BadRequestResponse), StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(typeof(UnauthorizedResponse), StatusCodes.Status401Unauthorized)]
+        [HttpGet("category/{category}")]
+        public async Task<IActionResult> Get([FromRoute] string category)
+        {
+            var response = await _productServiceApp.GetProductsByCategory(category);
+
+            return Response(response);
+        }
+
+        /// <summary>
         /// Realiza o cadastro de um novo produto
         /// </summary>
         /// <param name="viewModel">Dados do produto</param>
@@ -58,6 +73,7 @@ namespace FIAP.TechChallenge.Api.Controllers
         [ProducesResponseType(typeof(NoContentResult), StatusCodes.Status200OK)]
         [ProducesResponseType(typeof(BadRequestResponse), StatusCodes.Status400BadRequest)]
         [ProducesResponseType(typeof(UnauthorizedResponse), StatusCodes.Status401Unauthorized)]
+        [HttpDelete("{id}")]
         public async Task<IActionResult> Delete([FromRoute] string id)
         {
             if (ValidateStringToGuidParams(id))

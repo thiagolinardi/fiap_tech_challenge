@@ -37,7 +37,7 @@ namespace FIAP.TechChallenge.Domain.CommandHandlers.Order
             await _orderItemRepository.DeleteByExpressionAsync(x => x.OrderId == request.Id);
             await _orderRepository.DeleteByIdAsync(request.Id);
 
-            if (HasNotification() && !await _unitOfWork.CommitAsync())
+            if (HasNotification() || !await _unitOfWork.CommitAsync())
                 NotifyError(Values.Message.DefaultError);
         }
     }

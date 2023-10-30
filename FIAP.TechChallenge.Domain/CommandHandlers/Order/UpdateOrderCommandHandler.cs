@@ -59,7 +59,7 @@ namespace FIAP.TechChallenge.Domain.CommandHandlers
                     Quantity = x.Quantity
                 }).ToList());
 
-            if (HasNotification() && !await _unitOfWork.CommitAsync())
+            if (HasNotification() || !await _unitOfWork.CommitAsync())
                 NotifyError(Values.Message.DefaultError);
         }
     }

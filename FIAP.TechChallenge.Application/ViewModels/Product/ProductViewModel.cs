@@ -23,7 +23,7 @@
         public decimal Price { get; set; }
 
         /// <summary>
-        /// Categoria do produto
+        /// Categoria do produto (Lanche, Acompanhamento, Bebida ou Sobremesa)
         /// </summary>
         public string Category { get; set; }
     }
