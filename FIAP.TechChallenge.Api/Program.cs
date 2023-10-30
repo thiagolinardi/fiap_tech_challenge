@@ -20,14 +20,14 @@ IConfiguration configuration = builder.Configuration;
 // Add services to the container.
 
 builder.Services.AddDependencyInjectionSetup();
-builder.Services.AddTechChallengeAuthentication();
+//builder.Services.AddTechChallengeAuthentication();
 builder.Services.AddAutoMapperSetup();
 builder.Services.AddSwaggerSetup();
 builder.Services.AddSqlContext<SqlContext>(configuration);
 builder.Services.AddResponseCompression();
 builder.Services.Configure<GzipCompressionProviderOptions>(opt => opt.Level = CompressionLevel.Optimal);
 builder.Services.AddCryptographySetup(configuration);
-builder.Services.AddSettingSetup(configuration);
+//builder.Services.AddSettingSetup(configuration);
 builder.Services.AddControllers(x => x.Conventions.Add(new ControllerDocumentationConvention()))
     .AddJsonOptions(x => x.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles);
 builder.Services.AddOptions();

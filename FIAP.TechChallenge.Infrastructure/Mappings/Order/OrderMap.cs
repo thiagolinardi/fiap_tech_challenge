@@ -9,8 +9,7 @@ namespace FIAP.TechChallenge.Infrastructure.Mappings
         public override void Configure(EntityTypeBuilder<Domain.Entities.Order> builder)
         {
             builder.Property(x => x.CustomerId)
-                .HasColumnName("customer_id")
-                .IsRequired();
+                .HasColumnName("customer_id");
 
             builder.Property(x => x.Total)
                 .HasColumnName("total")

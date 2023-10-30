@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace FIAP.TechChallenge.Infrastructure.Migrations
 {
     /// <inheritdoc />
-    public partial class initial : Migration
+    public partial class Initial : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -46,7 +46,7 @@ namespace FIAP.TechChallenge.Infrastructure.Migrations
                     name = table.Column<string>(type: "nvarchar(200)", maxLength: 200, nullable: false),
                     description = table.Column<string>(type: "nvarchar(500)", maxLength: 500, nullable: false),
                     price = table.Column<decimal>(type: "decimal(5,2)", nullable: false),
-                    Category = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    category = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
                     created_at = table.Column<DateTime>(type: "datetime2", nullable: false),
                     updated_at = table.Column<DateTime>(type: "datetime2", nullable: true)
                 },
@@ -61,7 +61,7 @@ namespace FIAP.TechChallenge.Infrastructure.Migrations
                 columns: table => new
                 {
                     id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    customer_id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    customer_id = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
                     total = table.Column<decimal>(type: "decimal(8,2)", nullable: false),
                     created_at = table.Column<DateTime>(type: "datetime2", nullable: false),
                     updated_at = table.Column<DateTime>(type: "datetime2", nullable: true)
@@ -74,17 +74,16 @@ namespace FIAP.TechChallenge.Infrastructure.Migrations
                         column: x => x.customer_id,
                         principalSchema: "customer",
                         principalTable: "customers",
-                        principalColumn: "id",
-                        onDelete: ReferentialAction.Cascade);
+                        principalColumn: "id");
                 });
 
             migrationBuilder.CreateTable(
-                name: "order_items",
+                name: "items",
                 schema: "order",
                 columns: table => new
                 {
                     id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    OrderId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    order_id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     product_id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     quantity = table.Column<int>(type: "int", nullable: false),
                     created_at = table.Column<DateTime>(type: "datetime2", nullable: false),
@@ -92,16 +91,16 @@ namespace FIAP.TechChallenge.Infrastructure.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_order_items", x => x.id);
+                    table.PrimaryKey("PK_items", x => x.id);
                     table.ForeignKey(
-                        name: "FK_order_items_orders_OrderId",
-                        column: x => x.OrderId,
+                        name: "FK_items_orders_order_id",
+                        column: x => x.order_id,
                         principalSchema: "order",
                         principalTable: "orders",
                         principalColumn: "id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
-                        name: "FK_order_items_products_product_id",
+                        name: "FK_items_products_product_id",
                         column: x => x.product_id,
                         principalSchema: "product",
                         principalTable: "products",
@@ -110,15 +109,15 @@ namespace FIAP.TechChallenge.Infrastructure.Migrations
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_order_items_OrderId",
+                name: "IX_items_order_id",
                 schema: "order",
-                table: "order_items",
-                column: "OrderId");
+                table: "items",
+                column: "order_id");
 
             migrationBuilder.CreateIndex(
-                name: "IX_order_items_product_id",
+                name: "IX_items_product_id",
                 schema: "order",
-                table: "order_items",
+                table: "items",
                 column: "product_id");
 
             migrationBuilder.CreateIndex(
@@ -132,7 +131,7 @@ namespace FIAP.TechChallenge.Infrastructure.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "order_items",
+                name: "items",
                 schema: "order");
 
             migrationBuilder.DropTable(

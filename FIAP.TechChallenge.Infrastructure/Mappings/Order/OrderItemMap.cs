@@ -3,7 +3,6 @@ using FIAP.TechChallenge.Domain.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-
 namespace FIAP.TechChallenge.Infrastructure.Mappings.Order
 {
     public class OrderItemMap : EntityTypeConfigurationBase<OrderItem>
@@ -14,18 +13,22 @@ namespace FIAP.TechChallenge.Infrastructure.Mappings.Order
                 .HasColumnName("product_id")
                 .IsRequired();
 
+            builder.Property(x => x.OrderId)
+                .HasColumnName("order_id")
+                .IsRequired();
+
             builder.Property(x => x.Quantity)
                 .HasColumnName("quantity")
                 .IsRequired();
 
             builder.HasOne(x => x.Order)
                 .WithMany(x => x.OrderItems)
-                .HasForeignKey(x => x.OrderId);
+                .HasForeignKey(x => x.OrderId)
+                .OnDelete(DeleteBehavior.Restrict);
 
-            builder.ToTable("order_items", "order");
+            builder.ToTable("items", "order");
 
             base.Configure(builder);
         }
     }
 }
-

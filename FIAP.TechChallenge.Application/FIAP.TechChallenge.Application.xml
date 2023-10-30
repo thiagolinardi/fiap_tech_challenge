@@ -1,0 +1,123 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>FIAP.TechChallenge.Application</name>
+    </assembly>
+    <members>
+        <member name="P:FIAP.TechChallenge.Application.ViewModels.CustomerRequestViewModel.Id">
+            <summary>
+            Código do cliente
+            </summary>
+        </member>
+        <member name="P:FIAP.TechChallenge.Application.ViewModels.CustomerRequestViewModel.Name">
+            <summary>
+            Nome do cliente
+            </summary>
+        </member>
+        <member name="P:FIAP.TechChallenge.Application.ViewModels.CustomerRequestViewModel.Email">
+            <summary>
+            E-mail do cliente
+            </summary>
+        </member>
+        <member name="P:FIAP.TechChallenge.Application.ViewModels.CustomerRequestViewModel.Document">
+            <summary>
+            CPF do cliente
+            </summary>
+        </member>
+        <member name="P:FIAP.TechChallenge.Application.ViewModels.CustomerResponseViewModel.Id">
+            <summary>
+            Código do cliente
+            </summary>
+        </member>
+        <member name="P:FIAP.TechChallenge.Application.ViewModels.CustomerResponseViewModel.Name">
+            <summary>
+            Nome do cliente
+            </summary>
+        </member>
+        <member name="P:FIAP.TechChallenge.Application.ViewModels.CustomerResponseViewModel.Document">
+            <summary>
+            CPF do cliente
+            </summary>
+        </member>
+        <member name="P:FIAP.TechChallenge.Application.ViewModels.CustomerResponseViewModel.Email">
+            <summary>
+            E-mail do cliente
+            </summary>
+        </member>
+        <member name="P:FIAP.TechChallenge.Application.ViewModels.OrderRequestViewModel.CustomerId">
+            <summary>
+            Código do cliente
+            </summary>
+        </member>
+        <member name="P:FIAP.TechChallenge.Application.ViewModels.OrderRequestViewModel.Total">
+            <summary>
+            Valor total do pedido
+            </summary>
+        </member>
+        <member name="P:FIAP.TechChallenge.Application.ViewModels.OrderRequestViewModel.OrderItem.ProductId">
+            <summary>
+            Código do produto
+            </summary>
+        </member>
+        <member name="P:FIAP.TechChallenge.Application.ViewModels.OrderRequestViewModel.OrderItem.Quantity">
+            <summary>
+            Quantidade do produto
+            </summary>
+        </member>
+        <member name="P:FIAP.TechChallenge.Application.ViewModels.OrderResponseViewModel.Id">
+            <summary>
+            Código do pedido
+            </summary>
+        </member>
+        <member name="P:FIAP.TechChallenge.Application.ViewModels.OrderResponseViewModel.Total">
+            <summary>
+            Valor total do pedido
+            </summary>
+        </member>
+        <member name="P:FIAP.TechChallenge.Application.ViewModels.OrderResponseViewModel.CreatedAt">
+            <summary>
+            Items do pedido
+            </summary>
+        </member>
+        <member name="P:FIAP.TechChallenge.Application.ViewModels.Items.ProductId">
+            <summary>
+            Código do produto
+            </summary>
+        </member>
+        <member name="P:FIAP.TechChallenge.Application.ViewModels.Items.Name">
+            <summary>
+            Nome do produto
+            </summary>
+        </member>
+        <member name="P:FIAP.TechChallenge.Application.ViewModels.Items.Price">
+            <summary>
+            Preço do produto
+            </summary>
+        </member>
+        <member name="P:FIAP.TechChallenge.Application.ViewModels.ProductViewModel.Id">
+            <summary>
+            Código do produto
+            </summary>
+        </member>
+        <member name="P:FIAP.TechChallenge.Application.ViewModels.ProductViewModel.Name">
+            <summary>
+            Nome do produto
+            </summary>
+        </member>
+        <member name="P:FIAP.TechChallenge.Application.ViewModels.ProductViewModel.Description">
+            <summary>
+            Descrição do produto
+            </summary>
+        </member>
+        <member name="P:FIAP.TechChallenge.Application.ViewModels.ProductViewModel.Price">
+            <summary>
+            Preço do produto
+            </summary>
+        </member>
+        <member name="P:FIAP.TechChallenge.Application.ViewModels.ProductViewModel.Category">
+            <summary>
+            Categoria do produto
+            </summary>
+        </member>
+    </members>
+</doc>

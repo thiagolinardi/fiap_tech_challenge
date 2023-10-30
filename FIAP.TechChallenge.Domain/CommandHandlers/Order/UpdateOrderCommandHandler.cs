@@ -49,21 +49,18 @@ namespace FIAP.TechChallenge.Domain.CommandHandlers
                                                         .Except(order.OrderItems.Select(x => x.ProductId));
 
             foreach (var productId in removeOrderItemsProductsIds)
-            {
                 await _orderItemRepository.DeleteByExpressionAsync(x => x.ProductId == productId);
-            }
 
             await _orderItemRepository.InsertRangeAsync(
                 request.OrderItems.Where(x => newOrderItemsProductsIds.Contains(x.ProductId)).Select(x => new OrderItem()
-            {
-                OrderId = order.Id,
-                ProductId = x.ProductId,
-                Quantity = x.Quantity
-            }).ToList());
+                {
+                    OrderId = order.Id,
+                    ProductId = x.ProductId,
+                    Quantity = x.Quantity
+                }).ToList());
 
             if (HasNotification() && !await _unitOfWork.CommitAsync())
                 NotifyError(Values.Message.DefaultError);
         }
     }
 }
-

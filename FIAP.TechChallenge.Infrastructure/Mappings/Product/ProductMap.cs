@@ -9,6 +9,11 @@ namespace FIAP.TechChallenge.Infrastructure.Mappings
     {
         public override void Configure(EntityTypeBuilder<Product> builder)
         {
+            builder.Property(x => x.Category)
+                .HasColumnName("category")
+                .HasMaxLength(50)
+                .IsRequired();
+
             builder.Property(x => x.Name)
                 .HasColumnName("name")
                 .HasMaxLength(200)

@@ -28,4 +28,3 @@ namespace FIAP.TechChallenge.Domain.QueryHandlers
         }
     }
 }
-

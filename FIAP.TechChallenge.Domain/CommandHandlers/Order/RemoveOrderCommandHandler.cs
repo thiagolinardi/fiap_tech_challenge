@@ -1,5 +1,4 @@
-﻿using System;
-using FIAP.Crosscutting.Domain.Commands.Handlers;
+﻿using FIAP.Crosscutting.Domain.Commands.Handlers;
 using FIAP.Crosscutting.Domain.MediatR;
 using FIAP.TechChallenge.Domain.Commands;
 using FIAP.TechChallenge.Domain.Helpers.Constants;
@@ -43,4 +42,3 @@ namespace FIAP.TechChallenge.Domain.CommandHandlers.Order
         }
     }
 }
-

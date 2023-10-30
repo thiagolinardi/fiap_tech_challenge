@@ -36,6 +36,7 @@ namespace FIAP.TechChallenge.Api.Configurations
                 throw new ArgumentNullException(nameof(app));
 
             app.UseOpenApi();
+
             app.UseReDoc(opt =>
             {
                 opt.Path = "/docs";

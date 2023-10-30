@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace FIAP.TechChallenge.Infrastructure.Migrations
 {
     [DbContext(typeof(SqlContext))]
-    [Migration("20231027005507_initial")]
-    partial class initial
+    [Migration("20231030004407_Initial")]
+    partial class Initial
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -76,7 +76,7 @@ namespace FIAP.TechChallenge.Infrastructure.Migrations
                         .HasColumnName("created_at")
                         .HasAnnotation("Relational:JsonPropertyName", "created_at");
 
-                    b.Property<Guid>("CustomerId")
+                    b.Property<Guid?>("CustomerId")
                         .HasColumnType("uniqueidentifier")
                         .HasColumnName("customer_id");
 
@@ -110,7 +110,8 @@ namespace FIAP.TechChallenge.Infrastructure.Migrations
                         .HasAnnotation("Relational:JsonPropertyName", "created_at");
 
                     b.Property<Guid>("OrderId")
-                        .HasColumnType("uniqueidentifier");
+                        .HasColumnType("uniqueidentifier")
+                        .HasColumnName("order_id");
 
                     b.Property<Guid>("ProductId")
                         .HasColumnType("uniqueidentifier")
@@ -131,7 +132,7 @@ namespace FIAP.TechChallenge.Infrastructure.Migrations
 
                     b.HasIndex("ProductId");
 
-                    b.ToTable("order_items", "order");
+                    b.ToTable("items", "order");
                 });
 
             modelBuilder.Entity("FIAP.TechChallenge.Domain.Entities.Product", b =>
@@ -143,7 +144,10 @@ namespace FIAP.TechChallenge.Infrastructure.Migrations
                         .HasAnnotation("Relational:JsonPropertyName", "id");
 
                     b.Property<string>("Category")
-                        .HasColumnType("nvarchar(max)");
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)")
+                        .HasColumnName("category");
 
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("datetime2")
@@ -180,9 +184,7 @@ namespace FIAP.TechChallenge.Infrastructure.Migrations
                 {
                     b.HasOne("FIAP.TechChallenge.Domain.Entities.Customer", "Customer")
                         .WithMany()
-                        .HasForeignKey("CustomerId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("CustomerId");
 
                     b.Navigation("Customer");
                 });
@@ -192,7 +194,7 @@ namespace FIAP.TechChallenge.Infrastructure.Migrations
                     b.HasOne("FIAP.TechChallenge.Domain.Entities.Order", "Order")
                         .WithMany("OrderItems")
                         .HasForeignKey("OrderId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.HasOne("FIAP.TechChallenge.Domain.Entities.Product", "Product")
