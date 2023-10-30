@@ -4,17 +4,6 @@
 
 Projeto de API do Tech Challenge da FIAP
 
-## Índice
-
-- [FIAP Tech Challenge](#fiap-tech-challenge)
-  - [Descrição](#descrição)
-  - [Índice](#índice)
-  - [Requisitos do Sistema](#requisitos-do-sistema)
-  - [Uso](#uso)
-  - [Tecnologias implementadas](#tecnologias-implementadas)
-  - [Arquitetura](#arquitetura)
-  - [Licença](#licença)
-
 ## Requisitos do Sistema
 
 Para execução do projeto é necessário a instalação do Docker Desktop
