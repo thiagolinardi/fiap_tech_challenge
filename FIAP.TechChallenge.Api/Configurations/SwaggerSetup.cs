@@ -37,7 +37,7 @@ namespace FIAP.TechChallenge.Api.Configurations
 
             app.UseOpenApi();
 
-            app.UseReDoc(opt =>
+            app.UseSwaggerUi3(opt =>
             {
                 opt.Path = "/docs";
             });
