@@ -1,8 +1,6 @@
-using FIAP.Crosscutting.Domain.Services.Authentication;
 using FIAP.Crosscutting.Infrastructure.Contexts.SqlServer;
 using FIAP.TechChallenge.Api.Configurations;
 using FIAP.TechChallenge.Api.Conventions;
-using FIAP.TechChallenge.Domain.Middlewares;
 using FIAP.TechChallenge.Infrastructure.Contexts;
 using Microsoft.AspNetCore.ResponseCompression;
 using System.IO.Compression;
@@ -20,14 +18,14 @@ IConfiguration configuration = builder.Configuration;
 // Add services to the container.
 
 builder.Services.AddDependencyInjectionSetup();
-builder.Services.AddTechChallengeAuthentication();
+//builder.Services.AddTechChallengeAuthentication();
 builder.Services.AddAutoMapperSetup();
 builder.Services.AddSwaggerSetup();
 builder.Services.AddSqlContext<SqlContext>(configuration);
 builder.Services.AddResponseCompression();
 builder.Services.Configure<GzipCompressionProviderOptions>(opt => opt.Level = CompressionLevel.Optimal);
 builder.Services.AddCryptographySetup(configuration);
-builder.Services.AddSettingSetup(configuration);
+//builder.Services.AddSettingSetup(configuration);
 builder.Services.AddControllers(x => x.Conventions.Add(new ControllerDocumentationConvention()))
     .AddJsonOptions(x => x.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles);
 builder.Services.AddOptions();
@@ -46,15 +44,8 @@ var app = builder.Build();
 
 app.MigrationAndSeedDatabase();
 
-if (app.Environment.IsDevelopment() || app.Environment.IsStaging())
-{
-    //app.ConfigureExceptionHandler();
-    app.UseDeveloperExceptionPage();
-    app.UseSwaggerSetup();
-}
-else
-    app.ConfigureExceptionHandler();
-
+app.UseDeveloperExceptionPage();
+app.UseSwaggerSetup();
 app.UseApiVersioning();
 app.UseRouting();
 app.UseAuthentication();
