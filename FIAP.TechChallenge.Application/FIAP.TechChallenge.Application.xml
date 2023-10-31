@@ -44,6 +44,11 @@
             E-mail do cliente
             </summary>
         </member>
+        <member name="P:FIAP.TechChallenge.Application.ViewModels.OrderRequestViewModel.Id">
+            <summary>
+            Código do pedido
+            </summary>
+        </member>
         <member name="P:FIAP.TechChallenge.Application.ViewModels.OrderRequestViewModel.CustomerId">
             <summary>
             Código do cliente

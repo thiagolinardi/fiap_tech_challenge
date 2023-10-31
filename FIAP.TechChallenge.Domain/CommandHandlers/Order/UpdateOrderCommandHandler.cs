@@ -28,7 +28,7 @@ namespace FIAP.TechChallenge.Domain.CommandHandlers
 
         public override async Task AfterValidation(UpdateOrderCommand request)
         {
-            var order = await _orderRepository.GetByIdAsync(request.Id);
+            var order = await _orderRepository.GetOrderItemsById(request.Id);
 
             if (order == null)
             {

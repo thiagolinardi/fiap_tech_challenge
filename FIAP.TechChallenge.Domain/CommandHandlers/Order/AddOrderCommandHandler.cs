@@ -13,22 +13,35 @@ namespace FIAP.TechChallenge.Domain.CommandHandlers
     {
         private readonly IOrderRepository _orderRepository;
         private readonly IOrderItemRepository _orderItemRepository;
+        private readonly ICustomerRepository _customerRepository;
         private readonly IUnitOfWork _unitOfWork;
 
         public AddOrderCommandHandler(
             IOrderRepository orderRepository,
             IUnitOfWork unitOfWork,
             IMediatorHandler mediator,
-            IOrderItemRepository orderItemRepository) : base(mediator)
+            IOrderItemRepository orderItemRepository,
+            ICustomerRepository customerRepository) : base(mediator)
         {
             _orderRepository = orderRepository;
             _unitOfWork = unitOfWork;
             _orderItemRepository = orderItemRepository;
+            _customerRepository = customerRepository;
         }
 
         public override async Task AfterValidation(AddOrderCommand request)
         {
-            Int64 lastOrderNumber = await _orderRepository.CountAllAsync();
+            if (request.CustomerId.HasValue)
+            {
+                var customerExists = await _customerRepository.ExistsByExpressionAsync(x => x.Id == request.CustomerId);
+                if (!customerExists)
+                {
+                    NotifyError("O código do cliente informado não foi encontrado");
+                    return;
+                }
+            }
+
+            Int64 lastOrderNumber = await _orderRepository.CountAllAsync();            
 
             var order = new Entities.Order
             {

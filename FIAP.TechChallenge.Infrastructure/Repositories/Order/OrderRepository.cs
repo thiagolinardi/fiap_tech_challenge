@@ -39,5 +39,10 @@ namespace FIAP.TechChallenge.Infrastructure.Repositories
 
             return query;
         }
+
+        public async Task<Domain.Entities.Order> GetOrderItemsById(Guid id)
+        {
+            return await DbSet().Include(x => x.OrderItems).FirstOrDefaultAsync(x => x.Id == id);
+        }
     }
 }

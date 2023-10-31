@@ -5,6 +5,11 @@ namespace FIAP.TechChallenge.Application.ViewModels
     public class OrderRequestViewModel
 	{
         /// <summary>
+        /// Código do pedido
+        /// </summary>
+        public Guid? Id { get; set; }
+
+        /// <summary>
         /// Código do cliente
         /// </summary>
         [JsonPropertyName("customer_id")]
